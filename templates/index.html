@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Ranker</title>
+</head>
+<body>
+  <h2>Upload Resumes</h2>
+  <form action="/rank" method="post" enctype="multipart/form-data">
+    <input type="file" name="resumes" multiple>
+    <button type="submit">Rank</button>
+  </form>
+  {% if results %}
+    <h3>Results:</h3>
+    <ol>
+    {% for res in results %}
+      <li>{{ res.filename }} - Score: {{ res.score }}</li>
+    {% endfor %}
+    </ol>
+    <a href="/download">Download Report</a>
+  {% endif %}
+</body>
+</html>
